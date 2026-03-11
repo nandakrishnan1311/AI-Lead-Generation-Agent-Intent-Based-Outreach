@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Lead Generation Agent</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">LeadAgent <span class="logo-badge">AI</span></span>
+      </div>
+      <div class="header-right">
+        <span id="statusDot" class="status-dot idle" title="Agent status"></span>
+        <span id="statusLabel" class="status-label">Idle</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Hero / Controls ─────────────────────────────────────────────────── -->
+  <section class="hero">
+    <h1 class="hero-title">Intent-Based Lead Discovery</h1>
+    <p class="hero-sub">
+      Monitors PropTech &amp; real-estate news, classifies buying signals with AI,
+      and finds CEO / CTO contacts automatically.
+    </p>
+
+    <div class="action-row">
+      <button id="runBtn" class="btn btn-primary" onclick="runAgent()">
+        <span class="btn-icon">▶</span> Run Agent Now
+      </button>
+      <button class="btn btn-secondary" onclick="downloadReport()">
+        <span class="btn-icon">⬇</span> Download Excel
+      </button>
+      <button class="btn btn-ghost" onclick="loadLeads()">
+        <span class="btn-icon">↻</span> Refresh Leads
+      </button>
+    </div>
+
+    <div id="progressBar" class="progress-wrap hidden">
+      <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+      <p id="progressMsg" class="progress-msg">Starting pipeline…</p>
+    </div>
+  </section>
+
+  <!-- ── Stats Cards ──────────────────────────────────────────────────────── -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value" id="statTotal">—</div>
+        <div class="stat-label">Total Leads</div>
+      </div>
+      <div class="stat-card high">
+        <div class="stat-value" id="statHigh">—</div>
+        <div class="stat-label">High Intent (≥7)</div>
+      </div>
+      <div class="stat-card med">
+        <div class="stat-value" id="statMed">—</div>
+        <div class="stat-label">Medium Intent</div>
+      </div>
+      <div class="stat-card low">
+        <div class="stat-value" id="statLow">—</div>
+        <div class="stat-label">Low Intent</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statContacts">—</div>
+        <div class="stat-label">Contacts Found</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statAvg">—</div>
+        <div class="stat-label">Avg Score</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Lead Table ───────────────────────────────────────────────────────── -->
+  <section class="table-section">
+    <div class="table-header">
+      <h2 class="table-title">Discovered Leads</h2>
+      <input id="searchBox" class="search-box" type="text"
+             placeholder="🔍  Filter by company, contact, or signal…"
+             oninput="filterLeads()" />
+    </div>
+
+    <div class="table-wrap">
+      <table id="leadsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Title</th>
+            <th>LinkedIn</th>
+            <th>Website</th>
+            <th>Signal Summary</th>
+            <th>Score</th>
+            <th>Date Found</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="leadsBody">
+          <tr><td colspan="10" class="empty-state">
+            Click <strong>Run Agent</strong> or <strong>Refresh Leads</strong> to load data.
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── Toast ────────────────────────────────────────────────────────────── -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
