@@ -213,7 +213,4 @@ The generated `lead_report.xlsx` contains:
 - **APScheduler** — automated scheduling
 - **Vanilla JS + CSS** — lightweight zero-dependency frontend
 
----
 
-*Built for Strikin Internship Assignment — Task 02*  
-*Submit to: deepesh.j@strikin.com*
